@@ -1,6 +1,6 @@
 # Themenabend Iptables/Nftables
 
-![network-graph](network-graph.svg)
+![network-graph](https://github.com/c3d2/ta-iptables/raw/master/network-graph.svg)
 
 - pyroute2
 - ferm
