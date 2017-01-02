@@ -1,0 +1,32 @@
+# Ferm zeigen
+$ vim ferm.conf
+pc> ping 8.8.8.8
+host> tcpdump -i br0 -n
+$ ferm ferm.conf|less
+$ iptables -S |less
+$ ip6tables -S |less
+$ iptables -S -t nat|less
+host> tcpdump -i br0 -n # masquerading
+$ ferm --shell ferm.conf|less
+$ chromium 172.22.99.249
+$ chromium "http://[fd42::3]"
+
+# Nftables
+$ nft -f nft.conf
+$ nft list ruleset
+$ nft -i
+> list ruleset
+> list table ip nat
+> list chain ip nat postrouting
+> delete table ip nat
+> include "nft.conf";
+meta nftrace set 1
+$ nft monitor trace
+# input
+$ sudo tcpdump -i nflog:2 -n
+# forward
+$ sudo tcpdump -i nflog:1 -n
+$ /run/current-system/sw/bin/sshd -dD -f ./sshd_config -h /etc/ssh/ssh_host_ed25519_key
+$ nc -v 172.22.99.249 ssh
+
+ip daddr {$nas_ip4, $pc_ip4} tcp dport ssh accept

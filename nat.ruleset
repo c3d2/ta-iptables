@@ -1,0 +1,10 @@
+table ip nat {
+  chain prerouting {
+    type nat hook prerouting priority 0;
+    iifname "wan" ip daddr $public_ip4 tcp dport 80 dnat $nas_ip4;
+  }
+  chain postrouting {
+    type nat hook postrouting priority 0;
+    oifname "wan" masquerade
+  }
+}
